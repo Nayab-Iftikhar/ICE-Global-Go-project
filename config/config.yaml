@@ -1,0 +1,13 @@
+DBConfig:
+  User: root
+  Password: password
+  Host: localhost
+  Port: 3306
+  Name: todoapp
+
+S3Config:
+  Bucket: your-bucket-name
+  Region: us-east-1
+
+RedisConfig:
+  Addr: localhost:6379

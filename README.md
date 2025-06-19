@@ -8,22 +8,39 @@ This is a Todo application that allows users to create TodoItems, upload files, 
 
 1. **Clone the repo:**
    ```bash
-   git clone <repo-url>
-   cd todo-app
+   git clone <https://github.com/Nayab-Iftikhar/ICE-Global-Go-project.git>
    ```
 
-2. **Copy and edit environment variables:**
-   ```bash
-   cp .env.example .env
-   # Edit .env as needed
-   ```
-
-3. **Start all services (MySQL/MariaDB, Redis, LocalStack, app) with Docker Compose:**
+2. **Start all services (MySQL/MariaDB, Redis, LocalStack, app) with Docker Compose:**
    ```bash
    docker-compose up --build
    ```
 
 ---
+
+
+## Makefile Commands
+
+You can use the following `make` commands to simplify common development tasks:
+
+- **`make run`**  
+  Builds and starts the entire application stack (including the app, database, Redis, and LocalStack) using Docker Compose.
+
+- **`make test`**  
+  Runs all handler tests in the project.
+
+- **`make benchmark`**  
+  Executes all benchmarks in the `benchmark` directory, showing performance and memory allocation statistics.
+
+- **`make migrate`**  
+  Applies all database migrations to set up or update your local database schema.
+
+These commands help automate setup, testing, benchmarking, and database migrations, making local development and CI/CD easier.
+
+---
+
+
+
 
 ## Applying Migrations
 
@@ -68,6 +85,11 @@ This is a Todo application that allows users to create TodoItems, upload files, 
   ```
 
 ---
+
+
+
+
+
 
 ## Endpoints
 

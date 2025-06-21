@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"time"
 	"todo-app/internal/entities"
-
 	"github.com/go-redis/redis/v8"
 )
 
@@ -30,7 +29,6 @@ func (r *RedisStreamPublisher) Publish(ctx context.Context, item *entities.TodoI
 		return fmt.Errorf("failed to marshal todo item: %w", err)
 	}
 
-
 	_, err = r.client.XAdd(ctx, &redis.XAddArgs{
 		Stream: streamName,
 		Values: map[string]interface{}{
@@ -46,7 +44,6 @@ func (r *RedisStreamPublisher) Publish(ctx context.Context, item *entities.TodoI
 	return nil
 }
 
-
 func (r *RedisStreamPublisher) Subscribe(ctx context.Context) (<-chan *entities.TodoItem, error) {
 
 	err := r.client.XGroupCreate(ctx, streamName, groupName, "0").Err()
@@ -55,7 +52,6 @@ func (r *RedisStreamPublisher) Subscribe(ctx context.Context) (<-chan *entities.
 	}
 
 	todoChan := make(chan *entities.TodoItem)
-
 
 	go func() {
 		defer close(todoChan)
@@ -82,7 +78,6 @@ func (r *RedisStreamPublisher) Subscribe(ctx context.Context) (<-chan *entities.
 					fmt.Printf("Error reading from stream: %v\n", err)
 					continue
 				}
-
 				
 				for _, stream := range streams {
 					for _, message := range stream.Messages {
@@ -91,14 +86,12 @@ func (r *RedisStreamPublisher) Subscribe(ctx context.Context) (<-chan *entities.
 						if !ok {
 							continue
 						}
-
 						
 						var todoItem entities.TodoItem
 						if err := json.Unmarshal([]byte(todoItemJSON), &todoItem); err != nil {
 							fmt.Printf("Error unmarshaling todo item: %v\n", err)
 							continue
 						}
-
 						
 						select {
 						case todoChan <- &todoItem:

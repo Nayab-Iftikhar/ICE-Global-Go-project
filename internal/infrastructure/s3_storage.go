@@ -8,7 +8,6 @@ import (
 	"os"
 	"strings"
 	"time"
-
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -33,7 +32,6 @@ func NewS3Storage(client *s3.S3, bucketName string) *S3Storage {
 		bucketName: bucketName,
 	}
 }
-
 
 func isBucketExistsError(err error) bool {
 	if err == nil {
@@ -72,7 +70,6 @@ func main() {
 	s3Client := s3.New(sess)
 	storage := NewS3Storage(s3Client, "my-app-files-service")
 
-	
 	ctx := context.Background()
 	fileBytes := []byte("hello world from Go")
 	key, err := storage.UploadFile(ctx, fileBytes)

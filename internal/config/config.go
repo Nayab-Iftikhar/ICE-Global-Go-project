@@ -22,6 +22,6 @@ var S3Config = &aws.Config{
 	S3ForcePathStyle: aws.Bool(true),
 }
 func NewS3Client(cfg *aws.Config) *s3.S3 {
-	sess := session.Must(session.NewSession(cfg))
-	return s3.New(sess)
+	awsSession := session.Must(session.NewSession(cfg))
+	return s3.New(awsSession)
 }

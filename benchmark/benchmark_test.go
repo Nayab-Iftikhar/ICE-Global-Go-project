@@ -36,7 +36,7 @@ func BenchmarkMySQLInsert(b *testing.B) {
 }
 
 func BenchmarkS3Upload(b *testing.B) {
-	sess, err := session.NewSession(&aws.Config{
+	awsSession, err := session.NewSession(&aws.Config{
 		Region: aws.String("ap-southeast-2"),
 		Credentials: credentials.NewStaticCredentials(
 			"test", "test", ""), // from localstack env
@@ -47,7 +47,7 @@ func BenchmarkS3Upload(b *testing.B) {
 		b.Fatal(err)
 	}
 
-	s3Client := s3.New(sess)
+	s3Client := s3.New(awsSession)
 	data := []byte("benchmark file content")
 
 	_, _ = s3Client.CreateBucket(&s3.CreateBucketInput{

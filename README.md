@@ -10,6 +10,17 @@ This is a Todo application that allows users to create TodoItems, upload files, 
    ```bash
    git clone <https://github.com/Nayab-Iftikhar/ICE-Global-Go-project.git>
    ```
+2. **Create a .env file:**
+
+   In the project root, create a .env file with the following content:
+
+   ```bash
+   MYSQL_ROOT_PASSWORD=password
+   MYSQL_DATABASE=todoapp
+   AWS_ACCESS_KEY_ID=test
+   AWS_SECRET_ACCESS_KEY=test
+   AWS_REGION=ap-southeast-2
+   ```
 
 2. **Start all services (MySQL/MariaDB, Redis, LocalStack, app) with Docker Compose:**
    ```bash

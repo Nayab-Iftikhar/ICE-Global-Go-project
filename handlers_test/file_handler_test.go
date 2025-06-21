@@ -10,7 +10,6 @@ import (
 	"todo-app/internal/handlers"
 	"todo-app/internal/usecases"
 	"todo-app/mocks"
-
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/mock"
 )

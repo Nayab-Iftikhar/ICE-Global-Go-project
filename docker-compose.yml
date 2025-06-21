@@ -3,7 +3,7 @@ services:
   mysql:
     image: mariadb:10.5
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: todoapp
     ports:
       - "3306:3306"
@@ -13,9 +13,9 @@ services:
     image: localstack/localstack
     environment:
       - SERVICES=s3
-      - AWS_ACCESS_KEY_ID=test
-      - AWS_SECRET_ACCESS_KEY=test
-      - AWS_REGION=ap-southeast-2
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
     ports:
       - "4566:4566"
 
@@ -28,9 +28,9 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - AWS_ACCESS_KEY_ID=test
-      - AWS_SECRET_ACCESS_KEY=test
-      - AWS_REGION=ap-southeast-2
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=ap-southeast-2${AWS_REGION}
 
   redis:
     image: redis:7
